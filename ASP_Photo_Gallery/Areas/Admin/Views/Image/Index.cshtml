@@ -1,0 +1,28 @@
+﻿@model IEnumerable<ASP_Photo_Gallery.Core.Image>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Photos</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<p class="page-header"></p>
+
+<div class="row">
+    @foreach (var e in Model)
+    {
+        <div class="col-md-4">
+            <p>
+                | @Html.ActionLink("Edit", "Edit", new {id = e.Id}) | @Html.ActionLink("Delete", "Delete", new {id = e.Id}) |
+            </p>
+            <a class="choose" href="@Url.Action("Details", "Image", new { area = "", id = e.Id}, null)">
+                <img class="img-responsive" src="@Url.Action("Show", "Image", new {area = "", id = e.Id})" alt="" />
+            </a>
+            <p class="description">@e.Description</p>
+        </div>
+    }
+</div>
